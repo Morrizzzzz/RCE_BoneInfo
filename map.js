@@ -13,7 +13,7 @@ export function initMap({openDetail,onChange,getFilters}){
  tiles.getTileUrl=coords=>'https://service.pdok.nl/kadaster/brt-achtergrondkaart/wmts/v2_0/grijs/EPSG:3857/'+String(coords.z).padStart(2,'0')+'/'+coords.x+'/'+coords.y+'.png';
  tiles.on('tileerror',()=>{$('map-failure').hidden=false;$('map-failure').textContent='De achtergrondkaart is niet volledig geladen. Onderzoeksclusters en rastercellen blijven beschikbaar; probeer de pagina later te verversen.';});
  tiles.addTo(map);
- const layer=L.geoJSON(null,{style:f=>({color:'#2b6350',weight:1,fillColor:colorFor(f.properties.count),fillOpacity:.72}),pointToLayer:(f,latlng)=>L.circleMarker(latlng,{radius:6+Math.min(10,Math.sqrt(f.properties.count)),color:'#184d39',weight:1.5,fillColor:colorFor(f.properties.count),fillOpacity:.9}),onEachFeature:(f,l)=>{
+ const layer=L.geoJSON(null,{style:f=>({color:'#154273',weight:1,fillColor:colorFor(f.properties.count),fillOpacity:.72}),pointToLayer:(f,latlng)=>L.circleMarker(latlng,{radius:6+Math.min(10,Math.sqrt(f.properties.count)),color:'#154273',weight:1.5,fillColor:colorFor(f.properties.count),fillOpacity:.9}),onEachFeature:(f,l)=>{
   const tip=document.createElement('span');tip.textContent=`${f.properties.count} ${f.properties.count===1?'cluster':'clusters'} — klik voor details`;l.bindTooltip(tip,{sticky:true});
   l.on('click',()=>select(f.id));
   l.on('add',()=>{const el=l.getElement();if(el){el.setAttribute('tabindex','0');el.setAttribute('role','button');el.setAttribute('aria-label',`${f.properties.count} clusters op RD ${f.properties.rd_x}, ${f.properties.rd_y}. Toon clusters.`);el.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();select(f.id);}});}});
@@ -22,7 +22,7 @@ export function initMap({openDetail,onChange,getFilters}){
  $('map-legend-items').replaceChildren(...CLASSES.map(c=>{const span=document.createElement('span'),swatch=document.createElement('i');swatch.style.background=c.color;span.append(swatch,document.createTextNode(c.label));return span;}));
  function clearSelection(){selected=null;$('map-selection').hidden=true;layer.resetStyle();}
  function select(key){const b=result.buckets.find(b=>b.key===key);if(!b)return;selected=key;
-  layer.eachLayer(l=>{layer.resetStyle(l);if(l.feature.id===key)l.setStyle({color:'#b35531',weight:3,fillOpacity:.9});});
+  layer.eachLayer(l=>{layer.resetStyle(l);if(l.feature.id===key)l.setStyle({color:'#a15b00',weight:3,fillOpacity:.9});});
   $('map-selection').hidden=false;$('map-selection-title').textContent=`${fmt(b.members.length)} clusters · ${b.size?'rastercel '+b.size/1000+' km':'bronlocatie'} · RD ${b.x}, ${b.y}`;
   $('map-selection-list').replaceChildren(...b.members.map(c=>{const button=document.createElement('button');button.type='button';const title=document.createElement('strong');title.textContent=`${c.Plaats||'Onbekende plaats'}${c.Toponiem?' — '+c.Toponiem:''}`;const meta=document.createElement('span');meta.textContent=`Cluster ${c.Zoonr} · ${c.Complextype||'Complextype onbekend'}`;button.append(title,meta);button.onclick=()=>openDetail(c.Zoonr);return button;}));
  }

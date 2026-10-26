@@ -2,12 +2,12 @@
 export const RD = '+proj=sterea +lat_0=52.15616055555555 +lon_0=5.38763888888889 +k=0.9999079 +x_0=155000 +y_0=463000 +ellps=bessel +towgs84=565.4171,50.3319,465.5524,-0.398957,0.343988,-1.8774,4.0725 +units=m +no_defs';
 export const RESOLUTIONS = ['points','1000','5000','10000','25000'];
 export const CLASSES = [
- {min:1,max:1,label:'1',color:'#d3e9d6'},
- {min:2,max:5,label:'2–5',color:'#96c6a6'},
- {min:6,max:10,label:'6–10',color:'#61a887'},
- {min:11,max:25,label:'11–25',color:'#348266'},
- {min:26,max:50,label:'26–50',color:'#155e48'},
- {min:51,max:Infinity,label:'51+',color:'#083b30'}
+ {min:1,max:1,label:'1',color:'#e1edf7'},
+ {min:2,max:5,label:'2–5',color:'#b2d4ed'},
+ {min:6,max:10,label:'6–10',color:'#75b5df'},
+ {min:11,max:25,label:'11–25',color:'#368ec5'},
+ {min:26,max:50,label:'26–50',color:'#17659b'},
+ {min:51,max:Infinity,label:'51+',color:'#154273'}
 ];
 export const colorFor=n=>(CLASSES.find(c=>n>=c.min&&n<=c.max)||CLASSES[0]).color;
 export function coordinateStatus(c){

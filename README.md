@@ -6,12 +6,12 @@ Een complete statische Nederlandstalige zoekwebsite voor de BoneInfo Access-data
 
 1. Pak `boneinfo-github-pages.zip` uit.
 2. Maak een GitHub-repository, bijvoorbeeld `boneinfo`. Een openbare repository werkt met GitHub Free.
-3. Upload de **inhoud** van de uitgepakte map naar de hoofdmap van de repository: `index.html` moet direct in de hoofdmap staan, naast `app.js`, `search.js`, `style.css` en de map `data`. Upload niet alleen het ZIP-bestand. Laat de mappenstructuur intact.
+3. Upload de **inhoud** van de uitgepakte map naar de hoofdmap van de repository: `index.html` moet direct in de hoofdmap staan, naast `app.js`, `search.js`, `style.css`, `rce-theme.css` en de mappen `data`, `assets` en `vendor`. Upload niet alleen het ZIP-bestand. Laat de mappenstructuur intact.
 4. Commit de bestanden naar `main`.
 5. Open **Settings → Pages**. Kies bij **Source**: **Deploy from a branch**. Selecteer **main** en **/(root)** en klik **Save**.
 6. Wacht op de publicatie en gebruik **Visit site** in hetzelfde scherm. Bij een projectrepository is de URL doorgaans `https://GEBRUIKERSNAAM.github.io/boneinfo/`.
 
-Alle assetpaden zijn relatief en werken ook onder een repository-subpad. `.nojekyll` schakelt Jekyll uit. De scripts (inclusief Leaflet en Proj4js) worden lokaal meegeleverd. Er zijn geen webfonts, analytics of CDN-afhankelijkheden voor scripts. De achtergrondkaart wordt online opgehaald bij PDOK/Kadaster. De gegevens worden volledig openbaar toegankelijk wanneer je deze site publiceert.
+Alle assetpaden zijn relatief en werken ook onder een repository-subpad. `.nojekyll` schakelt Jekyll uit. De scripts (inclusief Leaflet en Proj4js) worden lokaal meegeleverd. Het RijksSans-lettertype is lokaal meegeleverd; er zijn geen analytics of CDN-afhankelijkheden voor scripts of lettertypen. De achtergrondkaart wordt online opgehaald bij PDOK/Kadaster. De gegevens worden volledig openbaar toegankelijk wanneer je deze site publiceert.
 
 GitHub-handleiding: https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site
 
@@ -85,7 +85,9 @@ Automatische tests controleren aantallen, behoud van relaties, ontbrekende taxa,
 ## Bestanden aanpassen
 
 - `index.html`: tekst, formulier en pagina-indeling.
-- `style.css`: vormgeving en responsive regels.
+- `style.css`: basisvormgeving en responsive regels.
+- `rce-theme.css`: RCE-geïnspireerde kleuren, typografie en componenten.
+- `assets/fonts`: lokaal RijksSans-lettertype.
 - `app.js`: interface, details, URL-status en CSV.
 - `search.js`: relaties en zoeklogica.
 - `data/boneinfo.json`: gegevens en bronmetadata.
@@ -119,8 +121,14 @@ Zonder filters: 1.153 unieke bronlocaties, 783 bezette 1km-cellen, 425 bezette 5
 
 ### Deze update publiceren
 
-Upload de volledige inhoud van het ZIP-bestand naar dezelfde hoofdmap van **Morrizzzzz/RCE_BoneInfo**, en vervang de bestaande bestanden. Voeg ook de nieuwe bestanden **map.js**, **spatial.js** en de volledige map **vendor** toe. De gegevensexport is ongewijzigd. De GitHub Pages-instelling kan blijven staan op main / (root). Ververs na de deployment eventueel met Ctrl+F5. De bestaande website-URL blijft gelijk.
+Upload de volledige inhoud van het ZIP-bestand naar dezelfde hoofdmap van **Morrizzzzz/RCE_BoneInfo**, en vervang de bestaande bestanden. Voeg ook de nieuwe bestanden **map.js**, **spatial.js**, **rce-theme.css** en de volledige mappen **vendor** en **assets** toe. De gegevensexport is ongewijzigd. De GitHub Pages-instelling kan blijven staan op main / (root). Ververs na de deployment eventueel met Ctrl+F5. De bestaande website-URL blijft gelijk.
 
 De map `vendor` bevat Leaflet 1.9.4 (BSD-2-Clause) en Proj4js 2.15.0 (MIT), inclusief licenties. De ondergrond gebruikt de grijze BRT Achtergrondkaart van PDOK/Kadaster via de EPSG:3857 WMTS-matrix. Bij een tegelstoring blijven de gegevenslaag en de zoeklijst werken en verschijnt een melding. Publicatie vereist geen API-sleutels.
 
 Tests: `npm test` voert zowel de oorspronkelijke zoektests als de ruimtelijke tests uit. De ruimtelijke tests verifiëren telbehoud op alle resoluties, celgrenzen, samenvallende locaties, uitsluitredenen, gefilterde en lege datasets, GeoJSON-ringen en controlepunten die onafhankelijk met pyproj zijn omgerekend.
+
+## Vormgeving
+
+De vormgeving sluit aan op de RCE-homepage: een gele titelbalk (#ffb612), donkerblauwe koppen (#154273), blauwe links en lichtgrijze panelen. Zoekresultaten, kaartlegenda, navigatie en detailvensters volgen dezelfde stijl. BoneInfo heeft een eigen B-beeldmerk en blijft herkenbaar als zelfstandige webversie. De zoeklogica en gegevensexport zijn ongewijzigd.
+
+RijksSans is lokaal opgenomen vanuit https://www.cultureelerfgoed.nl/fonts/rijks-sans-regular.woff2 (26 oktober 2026). Een systeemlettertype dient als terugval.
