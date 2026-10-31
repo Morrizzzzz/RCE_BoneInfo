@@ -132,3 +132,9 @@ Tests: `npm test` voert zowel de oorspronkelijke zoektests als de ruimtelijke te
 De vormgeving sluit aan op de RCE-homepage: een gele titelbalk (#ffb612), donkerblauwe koppen (#154273), blauwe links en lichtgrijze panelen. Zoekresultaten, kaartlegenda, navigatie en detailvensters volgen dezelfde stijl. BoneInfo heeft een eigen B-beeldmerk en blijft herkenbaar als zelfstandige webversie. De zoeklogica en gegevensexport zijn ongewijzigd.
 
 RijksSans is lokaal opgenomen vanuit https://www.cultureelerfgoed.nl/fonts/rijks-sans-regular.woff2 (26 oktober 2026). Een systeemlettertype dient als terugval.
+
+## Easter egg: de botten nemen de benen
+
+Klik driemaal op het blauwe B-logo (maximaal 1,6 seconde tussen klikken). Een paard, twee schapen en twee kippen lopen als schematische skeletten door het scherm. Het logo is ook met Tab en Enter/Spatie te bedienen; de tekst BoneInfo ernaast blijft de link naar de startpagina. De animatie verdwijnt vanzelf, met Escape of via Stop animatie. Extra klikken tijdens de parade starten geen extra dieren. Bij minder-bewegingvoorkeur worden de dieren zeven seconden stilstaand getoond. Zoekfilters en kaart blijven ongewijzigd. De SVG-tekeningen zijn decoratief, geen anatomische referentie.
+
+Upload bij deze update ook `easter-egg.js` en `easter-egg.css`, samen met de vernieuwde `index.html`. Er zijn geen nieuwe externe afhankelijkheden.

@@ -1,0 +1,21 @@
+/* The logo remains a keyboard-operable button; the adjacent title links home. */
+button.brandmark{color:white;border:0;cursor:pointer;flex-shrink:0;touch-action:manipulation;user-select:none}
+button.brandmark:hover{background:#216398}
+a.brand-identity{color:#154273;text-decoration:none}
+a.brand-identity:hover strong{text-decoration:underline}
+#bone-parade[hidden],#bone-parade-message[hidden]{display:none}
+#bone-parade{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:2500;contain:layout paint}
+.bone-walker{position:absolute;left:-280px;bottom:calc(18px + var(--lane));width:260px;animation:bone-cross 11s linear var(--delay) both;will-change:transform}
+.bone-sheep{width:210px}.bone-chicken{width:112px}
+.bone-walker svg{display:block;width:100%;overflow:visible;filter:drop-shadow(1px 0 #154273) drop-shadow(-1px 0 #154273) drop-shadow(0 1px #154273) drop-shadow(0 -1px #154273) drop-shadow(0 4px 2px #15427340)}
+.bone-ink{fill:none;stroke:#fff7df;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}
+.bone-ink circle{fill:#fff7df;stroke-width:2}.bone-ink .bone-eye{fill:#154273;stroke-width:2}
+.bone-far{opacity:.65}.bone-limb{animation:bone-step .65s ease-in-out infinite alternate;transform-box:view-box}.bone-opposite{animation-direction:alternate-reverse}
+.bone-gait{animation:bone-bob .325s ease-in-out infinite alternate}.bone-chicken .bone-limb{animation-duration:.24s}.bone-chicken .bone-gait{animation-duration:.24s}
+#bone-parade-message{position:fixed;right:20px;bottom:18px;z-index:2501;display:flex;align-items:center;gap:14px;max-width:calc(100vw - 40px);padding:10px 14px;background:#154273;color:#fff;border-top:4px solid #ffb612;box-shadow:0 3px 18px #0003;border-radius:3px;font-size:15px}
+#bone-parade-message button{flex-shrink:0;background:white;padding:6px 10px}
+@keyframes bone-cross{to{transform:translateX(calc(100vw + 560px))}}
+@keyframes bone-step{from{transform:rotate(-19deg)}to{transform:rotate(19deg)}}
+@keyframes bone-bob{to{transform:translateY(-4px)}}
+@media(max-width:650px){.bone-walker{width:190px;bottom:calc(76px + var(--lane))}.bone-sheep{width:155px}.bone-chicken{width:85px}#bone-parade-message{font-size:13px;right:12px;bottom:12px;max-width:calc(100vw - 24px);gap:8px}}
+@media(prefers-reduced-motion:reduce){.bone-walker,.bone-limb,.bone-gait{animation:none}.bone-walker{left:calc(var(--slot) * 19vw);bottom:85px;width:20vw;max-width:180px}.bone-chicken{width:13vw;max-width:95px}}
